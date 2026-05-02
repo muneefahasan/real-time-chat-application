@@ -1,23 +1,26 @@
-import React from 'react'
-import assets, { imagesDummyData } from '../assets/assets'
+import React, { useContext, useEffect, useState } from 'react'
+import assets from '../assets/assets'
+import { ChatContext } from '../context/ChatContext'
+import { AuthContext } from '../context/AuthContext'
 
-const RightSidebar = ({  }) => {
+const RightSidebar = () => {
 
-  const{selectedUser,messages} = useContext(ChatContext)
-  const {logout,onlineUsers}= useContext(AuthContext)
-  const [msgImages,setMsgImages] = useState([])
+  const { selectedUser, messages } = useContext(ChatContext)
+  const { logout, onlineUsers } = useContext(AuthContext)
+  const [msgImages, setMsgImages] = useState([])
 
-  //gett all images from the messages and set them to state
-  useEffect(()=>{
-    
-    setMsgImages(
-      messages.filter((msg)=>msg.image).map((msg)=>msg.image)
-    )
-  }, [ messages]);
+  //get all images from the messages and set them to state
+  useEffect(() => {
+    if (messages) {
+      setMsgImages(
+        messages.filter((msg) => msg.image).map((msg) => msg.image)
+      )
+    }
+  }, [messages])
 
   if (!selectedUser) return null
 
-  return  selectedUser && (
+  return selectedUser && (
     <div
       className={`bg-[#8185B2]/10 text-white w-full relative overflow-y-scroll
       ${selectedUser ? 'max-md:hidden' : ''}`}
@@ -31,7 +34,7 @@ const RightSidebar = ({  }) => {
         />
 
         <h1 className="px-10 text-xl font-medium mx-auto flex items-center gap-2">
-          {onlineUsers.include(selectedUser._id) &&  <p className="w-2 h-2 rounded-full bg-green-500"></p>}
+          {onlineUsers.includes(selectedUser._id) && <p className="w-2 h-2 rounded-full bg-green-500"></p>}
           {selectedUser.fullName}
         </h1>
 

@@ -9,22 +9,22 @@ const ProfilePage = () => {
   const {authUser, updateProfile} = useContext(AuthContext)
   const navigate = useNavigate();
   const [selectedImg, setSelectedImg] = useState(null)
-  const [name, setName] = useState(authUser.fullname )
+  const [name, setName] = useState(authUser.fullName)
   const [bio, setBio] = useState(authUser.bio)
 
-  const handleSubmit =async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if(!selectedImg){
-      await updateProfile({fullname:name,bio });
+    if (!selectedImg) {
+      await updateProfile({ fullName: name, bio });
       navigate('/')
       return;
     }
     const reader = new FileReader();
     reader.readAsDataURL(selectedImg);
-    reader.onloadend = async()=>{
+    reader.onloadend = async () => {
       const base64Image = reader.result;
-      await updateProfile({profilePic:base64Image,fullname:name,bio  });
+      await updateProfile({ profilePic: base64Image, fullName: name, bio });
       navigate('/');
     }
   }
