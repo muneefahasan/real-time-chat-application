@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import assets, { userDummyData } from '../assets/assets'
 import { useContext } from 'react'
@@ -12,7 +12,7 @@ unseenMessages,setUnseenMessages} = useContext(ChatContext);
 
   const {logout,onlineUsers} = useContext(AuthContext)
 
-  const[input,setInput] = useState(false)
+  const [input, setInput] = useState('')
   const navigate = useNavigate()
 
   const filteredUsers = input ? users.filter((user)=>user.fullName.toLowerCase().
@@ -74,8 +74,7 @@ useEffect(()=>{
         {filteredUsers.map((user, index) => (
           <div
             key={user._id || index}
-            onClick={() => setSelectedUser(user);setUnseenMessages(prev=>({...prev,[user._id]:0})
-          ({...prev,[user._id]:0}))}
+            onClick={() => { setSelectedUser(user); setUnseenMessages(prev => ({...prev, [user._id]: 0})) }}
             className={`relative flex items-center gap-2 p-2 pl-4 rounded
             cursor-pointer max-sm:text-sm
             ${selectedUser?._id === user._id ? 'bg-[#282142]/50' : ''}`}
@@ -95,10 +94,9 @@ useEffect(()=>{
               )}
             </div>
 
-            {unseenMessages[user._id] > 0 && 
-              <p className="absolute top-4 right-4 text-xs h-5 w-5
-              bg-green-500 text-white rounded-full flex items-center justify-center">
-                unseenMessages[user._id] }
+            {unseenMessages[user._id] > 0 && (
+              <p className="absolute top-4 right-4 text-xs h-5 w-5 bg-green-500 text-white rounded-full flex items-center justify-center">
+                {unseenMessages[user._id]}
               </p>
             )}
           </div>

@@ -1,4 +1,4 @@
-import React, { useContext ,useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import assets from '../assets/assets'
 import { AuthContext } from '../context/AuthContext'
@@ -61,7 +61,7 @@ const ProfilePage = () => {
                   : assets.avatar_icon
               }
               alt=""
-              className={'w-12 h-12 ${selectedImg &&'rounded-full'}'}/>
+              className={`w-12 h-12 ${selectedImg && 'rounded-full'}`}/>
               
 
             Upload profile image
@@ -96,8 +96,11 @@ const ProfilePage = () => {
           </button>
         </form>
 
-        <img className="max-w-44 aspect-square rounded-full mx-10 max-sm:mt-10 {selectedImg &&'rounded-full'} src={authUser?.profilePic||assets.logo_icon} alt=""/>
-
+        <img
+          className={`max-w-44 aspect-square rounded-full mx-10 max-sm:mt-10 ${selectedImg && 'rounded-full'}`}
+          src={authUser?.profilePic || assets.logo_icon}
+          alt=""
+        />
         {/* -------- Preview Image -------- */}
         <div className="p-10">
           <img
