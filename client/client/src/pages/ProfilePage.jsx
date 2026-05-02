@@ -89,7 +89,7 @@ const ProfilePage = () => {
 
           <button
             type="submit"
-            className="py-2 bg-gradient-to-r from-purple-400 to-violet-600
+            className="py-2 bg-gradient-to-r from-[#A7538A] to-[#5A2C68]
              text-white p-2 rounded-full text-lg cursor-pointer"
           >
             Save 

@@ -24,7 +24,7 @@ useEffect(()=>{
 
   return (
     <div
-      className={`bg-[#8185B2]/10 h-full p-5 rounded-r-xl overflow-y-scroll text-white
+      className={`bg-[#A7538A]/10 h-full p-5 rounded-r-xl overflow-y-scroll text-white
       ${selectedUser ? 'max-md:hidden' : ''}`}
     >
       <div className="pb-5">
@@ -40,7 +40,7 @@ useEffect(()=>{
 
             <div
               className="absolute top-full right-0 z-20 w-32 p-5 rounded-md
-              bg-[#282142] border border-gray-600 text-gray-100
+              bg-[#361F42] border border-gray-600 text-gray-100
               hidden group-hover:block"
             >
               <p
@@ -58,7 +58,7 @@ useEffect(()=>{
         </div>
 
         {/* Search */}
-        <div className="bg-[#282142] rounded-full flex items-center gap-2 py-3 px-4 mt-5">
+        <div className="bg-[#361F42] rounded-full flex items-center gap-2 py-3 px-4 mt-5">
           <img src={assets.search_icon} alt="Search" className="w-3" />
           <input onChange={(e)=>setInput(e.target.value)} value={input}
             type="text"
@@ -77,7 +77,7 @@ useEffect(()=>{
             onClick={() => { setSelectedUser(user); setUnseenMessages(prev => ({...prev, [user._id]: 0})) }}
             className={`relative flex items-center gap-2 p-2 pl-4 rounded
             cursor-pointer max-sm:text-sm
-            ${selectedUser?._id === user._id ? 'bg-[#282142]/50' : ''}`}
+            ${selectedUser?._id === user._id ? 'bg-[#361F42]/50' : ''}`}
           >
             <img
               src={user?.profilePic || assets.avatar_icon}

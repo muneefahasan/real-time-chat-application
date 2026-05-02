@@ -93,7 +93,7 @@ const ChatContainer = () => {
             ) : (
               <p
                 className={`p-2 max-w-[200px] md:text-sm font-light rounded-lg break-all
-                bg-violet-500/30 text-white
+                bg-[#A7538A]/30 text-white
                 ${
                   msg.senderId === authUser._id
                     ? 'rounded-br-none'
